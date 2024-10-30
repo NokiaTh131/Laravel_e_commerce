@@ -10,4 +10,9 @@ class Cart extends Model
     use HasFactory;
     protected $table = 'carts';
     protected $fillable = ['user_id'];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'in_cart')->withPivot('quantity');
+    }
 }

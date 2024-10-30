@@ -13,4 +13,20 @@ class Order extends Model
     protected $casts = [
         'date' => 'datetime'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'order_contain','order_no', 'product_id')->withPivot('amount');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
 }

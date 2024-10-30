@@ -13,4 +13,14 @@ class Comment extends Model
     protected $casts = [
         'date' => 'datetime'
     ];
+
+    public function orders()
+    {
+        return $this->belongsTo(Order::class, 'order_no');
+    }
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }
